@@ -1,0 +1,471 @@
+:root {
+    --primary-color: #2E7D32;
+    --secondary-color: #388E3C;
+    --light-green: #4CAF50;
+    --white: #FFFFFF;
+    --gray-100: #F8F9FA;
+    --gray-200: #E9ECEF;
+    --gray-300: #DEE2E6;
+    --gray-800: #343A40;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.05);
+    --sidebar-width: 250px;
+    --sidebar-width-collapsed: 70px;
+    --header-height: 60px;
+    --accent-color: #3498db;
+}
+
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background-color: var(--gray-100);
+    color: var(--gray-800);
+}
+
+/* Layout */
+.admin-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.admin-sidebar {
+    width: var(--sidebar-width);
+    background-color: var(--primary-color);
+    position: fixed;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow-md);
+    transition: width 0.3s ease;
+}
+
+.admin-sidebar.collapsed {
+    width: var(--sidebar-width-collapsed);
+}
+
+.admin-sidebar.collapsed .sidebar-title,
+.admin-sidebar.collapsed .nav-link span {
+    display: none;
+}
+
+.admin-main {
+    flex: 1;
+    margin-left: var(--sidebar-width);
+    min-height: 100vh;
+    transition: margin-left 0.3s ease;
+}
+
+.admin-main.expanded {
+    margin-left: var(--sidebar-width-collapsed);
+}
+
+/* Sidebar Header */
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: var(--secondary-color);
+}
+
+.sidebar-title {
+    color: white;
+    font-size: 1.2rem;
+    margin: 0;
+    white-space: nowrap;
+}
+
+/* Toggle Button */
+#sidebarToggle {
+    color: white;
+    padding: 0.5rem;
+    border: none;
+    background: transparent;
+}
+
+#sidebarToggle:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+/* Navigation Items */
+.nav-link {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.nav-link i {
+    width: 24px;
+    text-align: center;
+    margin-right: 1rem;
+    font-size: 1.2rem;
+}
+
+.nav-link span {
+    white-space: nowrap;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .admin-sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+
+    .admin-sidebar.show {
+        transform: translateX(0);
+    }
+
+    .admin-main {
+        margin-left: 0;
+    }
+}
+
+/* Top Navbar */
+.admin-navbar {
+    background-color: var(--white);
+    padding: 1rem 1.5rem;
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.navbar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Cards */
+.stats-card {
+    background-color: var(--white);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    border-left: 4px solid var(--primary-color);
+}
+
+.stats-card.success {
+    border-left-color: var(--light-green);
+}
+
+.stats-card h3 {
+    color: var(--gray-800);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.stats-card .value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+/* Tables */
+.table-container {
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: var(--shadow-sm);
+    padding: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .admin-sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+
+    .admin-sidebar.active {
+        transform: translateX(0);
+    }
+
+    .admin-main {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .sidebar-toggle {
+        display: block;
+    }
+}
+
+/* Utilities */
+.mb-4 {
+    margin-bottom: 1.5rem;
+}
+
+.container-fluid {
+    padding: 1.5rem;
+}
+
+/* Table Styles */
+.table {
+    margin-bottom: 0;
+    font-size: 0.9rem;
+}
+
+.table th {
+    background-color: var(--gray-100);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(0,0,0,.02);
+}
+
+/* Form Styles */
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(46, 125, 50, 0.25);
+}
+
+.input-group-text {
+    background-color: var(--gray-100);
+    border-color: var(--gray-300);
+}
+
+/* Card Styles */
+.card {
+    border: none;
+    box-shadow: var(--shadow-sm);
+    border-radius: 8px;
+}
+
+.card-header {
+    background-color: var(--white);
+    border-bottom: 1px solid var(--gray-200);
+    padding: 1rem 1.5rem;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+/* Button Styles */
+.btn-outline-primary {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--white);
+}
+
+/* Pagination */
+.pagination {
+    margin-bottom: 0;
+    margin-top: 1rem;
+}
+
+.page-link {
+    color: var(--primary-color);
+}
+
+.page-item.active .page-link {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+/* Add these to your existing CSS */
+
+/* Table Styles */
+.table {
+    font-size: 0.9rem;
+}
+
+.table th {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(0,0,0,.02);
+}
+
+/* Card Styles */
+.card {
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,.05);
+}
+
+.card-header {
+    background-color: transparent;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+}
+
+/* Form Controls */
+.form-control, .form-select {
+    border-color: #dee2e6;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+.input-group-text {
+    border-color: #dee2e6;
+    background-color: #f8f9fa;
+}
+
+/* Buttons */
+.btn {
+    font-weight: 500;
+}
+
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+}
+
+/* Badges */
+.badge {
+    font-weight: 500;
+    padding: 0.35em 0.65em;
+}
+
+/* Pagination */
+.pagination {
+    margin: 0;
+    justify-content: center;
+}
+
+.page-link {
+    padding: 0.375rem 0.75rem;
+    color: #333;
+    border-color: #dee2e6;
+}
+
+.page-item.active .page-link {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+/* Modal */
+.modal-content {
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,.15);
+}
+
+.modal-header {
+    border-bottom: 1px solid rgba(0,0,0,.1);
+}
+
+.modal-footer {
+    border-top: 1px solid rgba(0,0,0,.1);
+}
+
+/* Header Dropdown Styles */
+.admin-header {
+    padding: 1rem 1.5rem;
+    background: white;
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.admin-header .dropdown-toggle {
+    text-decoration: none;
+    color: var(--gray-800);
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.admin-header .dropdown-toggle:hover {
+    background-color: var(--gray-100);
+}
+
+.admin-header .dropdown-toggle::after {
+    margin-left: 0.5rem;
+    vertical-align: middle;
+}
+
+.admin-header .dropdown-menu {
+    min-width: 200px;
+    padding: 0.5rem 0;
+    margin-top: 0.5rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    border: 1px solid var(--gray-200);
+    border-radius: 4px;
+}
+
+.admin-header .dropdown-item {
+    padding: 0.625rem 1rem;
+    display: flex;
+    align-items: center;
+    color: var(--gray-800);
+    transition: background-color 0.2s;
+}
+
+.admin-header .dropdown-item:hover {
+    background-color: var(--gray-100);
+}
+
+.admin-header .dropdown-item i {
+    margin-right: 0.75rem;
+    font-size: 1.1rem;
+    width: 20px;
+    text-align: center;
+    color: var(--gray-600);
+}
+
+/* Add this to ensure dropdown works on mobile */
+@media (max-width: 768px) {
+    .admin-header .dropdown-menu {
+        position: absolute !important;
+        transform: none !important;
+        top: 100% !important;
+        right: 0 !important;
+        left: auto !important;
+    }
+} 

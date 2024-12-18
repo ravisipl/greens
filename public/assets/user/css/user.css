@@ -1,0 +1,174 @@
+/* Add your user-specific styles here */
+:root {
+    --header-height: 60px;
+    --primary-color: #2c3e50;
+    --accent-color: #3498db;
+}
+
+/* Copy the rest of your user styles here */ 
+
+/* Header Styles */
+.main-header {
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    padding: 0.5rem 1rem;
+}
+
+.brand-section {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0;
+}
+
+.logo {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+    max-width: 150px;
+}
+
+.brand-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+    white-space: nowrap;
+}
+
+.nav-link {
+    color: #666;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.nav-link:hover {
+    color: #007bff;
+}
+
+.nav-link.active {
+    color: #007bff;
+    font-weight: 500;
+}
+
+.nav-link i {
+    font-size: 1.1rem;
+}
+
+.user-section {
+    margin-left: 20px;
+}
+
+.user-section .dropdown {
+    position: relative;
+}
+
+.user-dropdown-btn {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px;
+    color: #333 !important;
+    background: #fff !important;
+    border: 1px solid #ddd !important;
+    padding: 8px 16px !important;
+    border-radius: 4px;
+}
+
+.user-dropdown-btn:hover,
+.user-dropdown-btn:focus,
+.user-dropdown-btn:active,
+.user-dropdown-btn[aria-expanded="true"] {
+    background-color: #f8f9fa !important;
+    color: #007bff !important;
+    border-color: #007bff !important;
+    box-shadow: none !important;
+}
+
+.user-dropdown-btn i {
+    font-size: 1.2rem;
+}
+
+.user-dropdown-btn::after {
+    display: none !important;
+}
+
+.dropdown-menu {
+    min-width: 200px;
+    padding: 0.5rem 0;
+    margin-top: 0.5rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+.dropdown-item {
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #333;
+    transition: all 0.2s ease;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+    background-color: #f8f9fa;
+    color: #007bff;
+}
+
+.dropdown-item i {
+    font-size: 1.1rem;
+    width: 20px;
+    text-align: center;
+}
+
+.dropdown-divider {
+    margin: 0.5rem 0;
+}
+
+/* Ensure dropdown works on mobile */
+@media (max-width: 991.98px) {
+    .user-section {
+        margin-left: 0;
+        margin-top: 1rem;
+    }
+    
+    .dropdown-menu {
+        position: absolute;
+        float: none;
+        width: 100%;
+    }
+}
+
+/* Content Wrapper Adjustment */
+.content-wrapper {
+    padding-top: 70px; /* Adjust based on header height */
+    min-height: calc(100vh - 70px);
+    background-color: #f8f9fa;
+    padding: 80px 20px 20px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        padding: 1rem 0;
+    }
+    
+    .user-section {
+        margin-left: 0;
+        margin-top: 1rem;
+    }
+}
